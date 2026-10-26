@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickCart - Order Detail</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+{% include "nav.html" %}
+<main>
+  <h1>Order #<span id="order-id"></span></h1>
+  <p id="order-success" class="msg msg-success" hidden>Order placed successfully!</p>
+  <p id="page-message" class="msg"></p>
+  <div class="tracker">
+    <span id="step-placed" class="step">Placed</span>
+    <span id="step-packed" class="step">Packed</span>
+    <span id="step-shipped" class="step">Shipped</span>
+    <span id="step-delivered" class="step">Delivered</span>
+  </div>
+  <section class="card">
+    <div>Status: <span id="order-status"></span></div>
+    <div>Subtotal: <span id="order-subtotal"></span></div>
+    <div>Discount: <span id="order-discount"></span></div>
+    <div class="total">Total: <span id="order-total"></span></div>
+    <div>Coupon: <span id="order-coupon"></span></div>
+    <div>Ship to: <span id="order-address"></span></div>
+    <div>Card: <span id="order-card"></span></div>
+    <div id="order-items"></div>
+  </section>
+  <section class="card status-row">
+    <label for="status-select">Status</label>
+    <select id="status-select">
+      <option value="Placed">Placed</option>
+      <option value="Packed">Packed</option>
+      <option value="Shipped">Shipped</option>
+      <option value="Delivered">Delivered</option>
+    </select>
+    <button id="update-status-btn" class="btn" type="button">Update Status</button>
+  </section>
+</main>
+</body>
+</html>

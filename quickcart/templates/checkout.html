@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickCart - Checkout</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+{% include "nav.html" %}
+<main>
+  <h1>Checkout</h1>
+  <section class="card narrow">
+    <div class="totals">
+      <div>Subtotal: <span id="checkout-subtotal"></span></div>
+      <div>Discount: <span id="checkout-discount"></span></div>
+      <div class="total">Total: <span id="checkout-total"></span></div>
+    </div>
+    <p id="checkout-error" class="msg msg-error"></p>
+    <label for="shipping-address">Shipping Address (10-200 characters)</label>
+    <textarea id="shipping-address" rows="3"></textarea>
+    <label for="card-name">Name on Card</label>
+    <input type="text" id="card-name" placeholder="Name as on card">
+    <label for="card-number">Card Number (16 digits)</label>
+    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+    <label for="card-expiry">Expiry</label>
+    <input type="text" id="card-expiry" placeholder="MM/YY">
+    <label for="card-cvv">CVV</label>
+    <input type="text" id="card-cvv" placeholder="3 digits">
+    <button id="place-order-btn" class="btn primary" type="button">Place Order</button>
+  </section>
+</main>
+</body>
+</html>

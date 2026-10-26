@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickCart - Product</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+{% include "nav.html" %}
+<main>
+  <section class="card narrow">
+    <div class="detail-meta">
+      <span id="product-category" class="chip"></span>
+    </div>
+    <h1 id="product-name"></h1>
+    <p id="product-price" class="price"></p>
+    <p id="product-stock" class="stock"></p>
+    <p id="product-description"></p>
+    <label for="qty-input">Quantity</label>
+    <input type="number" id="qty-input" value="1" min="1" max="10" step="1">
+    <button id="add-to-cart-btn" class="btn primary" type="button">Add to Cart</button>
+    <p id="page-message" class="msg"></p>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickCart - Cart</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+{% include "nav.html" %}
+<main>
+  <h1>Your Cart</h1>
+  <p id="cart-empty" class="msg" hidden>Your cart is empty.</p>
+  <section class="card">
+    <div id="cart-items"></div>
+    <div class="totals">
+      <div>Subtotal: <span id="cart-subtotal"></span></div>
+      <div>Discount: <span id="cart-discount"></span></div>
+      <div class="total">Total: <span id="cart-total"></span></div>
+    </div>
+    <div class="coupon-row">
+      <input type="text" id="coupon-input" placeholder="Coupon code">
+      <button id="apply-coupon-btn" class="btn primary" type="button">Apply Coupon</button>
+      <button id="remove-coupon-btn" class="btn" type="button">Remove Coupon</button>
+    </div>
+    <p id="coupon-message" class="msg"></p>
+    <button id="checkout-btn" class="btn primary" type="button">Proceed to Checkout</button>
+    <p id="page-message" class="msg"></p>
+  </section>
+</main>
+</body>
+</html>
