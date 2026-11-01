@@ -23,8 +23,9 @@ POSTMAN_CASE = {
 }
 for case_id, postman_case in POSTMAN_CASE.items():
     rows[case_id][10].value = "Manual browser run (Selenium, this run) + Postman: " + postman_case
+rows["TC-M-042"][2].value = "Detail-page quantity as a non-integer: 2.5 (regression for D-08)"
 rows["TC-M-042"][10].value = (
-    "Manual browser run (Selenium, this run) + Postman: TC-CART-05 (API rejects 2.5)")
+    "Manual browser run (Selenium, this run) + Selenium TC_UI_17 + Postman: TC-CART-05 (API rejects 2.5)")
 
 defects = wb["Defects & Observations"]
 new = defects.max_row + 1
@@ -40,11 +41,16 @@ if not any(cell.value == "D-10" for cell in defects["A"]):
     defects.cell(new, 5, "Open")
     defects.cell(new, 6, "Manual browser run TC-M-016/TC-M-017 (this run)")
 
+for row in defects.iter_rows(min_row=2):
+    if row[0].value == "D-08":
+        row[4].value = "Fixed (verified in this run by TC-M-042 and TC_UI_17)"
+
 summary = wb["Summary"]
+summary["B26"] = "17/17 passed (headless run)"
 summary["A29"] = "Manual cases (Selenium, this run)"
-summary["B29"] = "TC-M-004/005/007/016/017/071 executed for the first time; TC-M-042 re-checked -> 6 passed, 1 known Fail (D-08 re-confirmed)"
+summary["B29"] = "TC-M-004/005/007/016/017/071 executed for the first time (all Pass); TC-M-042 now Pass after the D-08 fix"
 summary["B28"] = ("Pass = verified against the live app by one of the runs above (see Actual Result). "
-                  "All 87 cases have now been executed: 86 Pass, 1 Fail (D-08), 0 Not Run.")
+                  "All 87 cases have now been executed: 87 Pass, 0 Fail, 0 Not Run.")
 
 wb.calculation.fullCalcOnLoad = True
 wb.save(BOOK)

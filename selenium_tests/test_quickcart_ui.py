@@ -307,3 +307,20 @@ def test_TC_UI_16_invalid_card_number(driver, wait):
     driver.get(BASE_URL + "/orders")
     wait_orders_page(driver, wait)
     assert orders_count(driver) == orders_before  # no order was created
+
+
+def test_TC_UI_17_non_integer_quantity(driver, wait):
+    """17: qty 2.5 on the product page -> API rejection message, cart unchanged (regression for D-08)."""
+    login(driver, wait)
+    ensure_clean_cart(driver, wait)
+    go_products(driver, wait)
+    product_card(driver, wait, CABLE).find_element(By.CSS_SELECTOR, ".product-name").click()
+    wait.until(lambda d: d.find_element(By.ID, "product-name").text == CABLE)
+    before = cart_count(driver)
+    inp = shown(wait, (By.ID, "qty-input"))
+    inp.clear()
+    inp.send_keys("2.5")
+    driver.find_element(By.ID, "add-to-cart-btn").click()
+    msg = WAIT_ERROR(wait, (By.ID, "page-message"))
+    assert msg.text == "quantity must be an integer between 1 and 10"
+    assert cart_count(driver) == before  # nothing was added

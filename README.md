@@ -77,15 +77,15 @@ Re-runnable on a dirty DB; failures save a screenshot to `selenium_tests/screens
 |---|---|---|
 | API suite (`tests/test_api.py`) | 224 assertions | all pass (fresh DB run) |
 | Postman collection | 164 requests / 355 assertions | all pass (run twice: fresh DB + dirty DB) |
-| Selenium UI suite | 16 tests | all pass (fresh DB + dirty DB runs) |
-| Manual test cases (`docs/`) | 87 cases | 86 Pass, 1 Fail (D-08), 0 Not Run |
-| Defects & observations log | 10 entries | 7 accepted observations + 3 open low items (D-03, D-08, D-10) |
+| Selenium UI suite | 17 tests | all pass |
+| Manual test cases (`docs/`) | 87 cases | 87 Pass, 0 Fail, 0 Not Run |
+| Defects & observations log | 10 entries | 7 accepted observations + 2 open low items (D-03, D-10) + 1 fixed defect (D-08) |
 
 ## QA focus areas (mapping)
 
 1. **Manual testing with BVA / EP analysis** — `docs/QuickCart_Manual_Test_Cases.xlsx`: equivalence-class and boundary analysis for quantity, coupon minimums, coupon validity, card number, expiry, CVV, address, names, registration fields, price/stock; 87 manual test cases mapped to the analysis rows (TC-M-001 … TC-M-087).
 2. **API testing with Postman** — `postman/`: 8 folders (Setup → Auth & Profile → Products → Cart → Coupons → Checkout → Orders → Cleanup), every request has named `pm.test` assertions, covers every BVA/EP class at API level, re-runnable and self-cleaning.
-3. **Selenium UI automation** — `selenium_tests/`: 16 UI flows (TC_UI_01 … 16) with explicit waits, fresh browser per test, re-runnable, headless option, failure screenshots.
+3. **Selenium UI automation** — `selenium_tests/`: 17 UI flows (TC_UI_01 … 17) with explicit waits, fresh browser per test, re-runnable, headless option, failure screenshots.
 
 ## Known limitations (full list in the Defects & Observations sheet)
 
@@ -93,5 +93,4 @@ Re-runnable on a dirty DB; failures save a screenshot to `selenium_tests/screens
 - Search does not escape SQL LIKE wildcards (`%`, `_`).
 - No stock locking between simultaneous purchases; no per-user coupon usage limits.
 - Dev server with a fixed secret key; not production-ready.
-- UI defect found during manual testing: a non-integer quantity typed on the product page (e.g. `2.5`) is silently truncated to `2` by the page script (the API itself rejects it). See D-08 / TC-M-042.
 - UI messages lose their red/green colour after an API call (JS sets `msg error`, CSS styles `.msg-error`). See D-10.

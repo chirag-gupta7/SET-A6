@@ -142,9 +142,9 @@ def non_integer_quantity():
         msg = b.w.until(lambda d: d.find_element(By.ID, "page-message").text)
         count = b.d.find_element(By.ID, "cart-count").text
         b.d.get(BASE + "/cart")
-        b.w.until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".cart-row")))
-        row_qty = b.d.find_element(By.CSS_SELECTOR, ".cart-row .cart-qty").get_attribute("value")
-        actual = ("Page message %r; cart badge %s, cart row qty %s (silently truncated)"
+        b.w.until(EC.visibility_of_element_located((By.ID, "cart-empty")))
+        row_qty = "0 rows (cart empty)"
+        actual = ("Page message %r; cart badge %s, cart %s"
                   % (msg, count, row_qty))
         record("TC-M-042", "Detail-page quantity as a non-integer: 2.5 - DEFECT row", expected, actual,
                msg == "quantity must be an integer between 1 and 10" and count == "0", b)

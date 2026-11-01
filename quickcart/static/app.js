@@ -230,7 +230,8 @@ function initProductDetail() {
     document.getElementById("product-description").textContent = p.description || "";
 
     document.getElementById("add-to-cart-btn").addEventListener("click", async function () {
-      const quantity = parseInt(document.getElementById("qty-input").value, 10);
+      // Number, not parseInt: a value like 2.5 must reach the API (which rejects it), not be truncated to 2.
+      const quantity = Number(document.getElementById("qty-input").value);
       const add = await request("POST", "/api/cart/add", { product_id: productId, quantity: quantity });
       if (redirectIfLoggedOut(add.status)) return;
       if (add.status === 200) {
@@ -290,7 +291,7 @@ function initCart() {
     if (!row) return;
     const productId = Number(row.dataset.productId);
     if (event.target.matches(".update-btn")) {
-      const quantity = parseInt(row.querySelector(".cart-qty").value, 10);
+      const quantity = Number(row.querySelector(".cart-qty").value);
       const resp = await request("PUT", "/api/cart/update", { product_id: productId, quantity: quantity });
       if (redirectIfLoggedOut(resp.status)) return;
       if (resp.status === 200) {

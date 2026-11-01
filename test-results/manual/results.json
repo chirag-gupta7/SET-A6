@@ -45,7 +45,7 @@
     "id": "TC-M-042",
     "scenario": "Detail-page quantity as a non-integer: 2.5 - DEFECT row",
     "expected": "quantity must be an integer between 1 and 10; the cart does not change",
-    "actual": "Page message 'Added to cart'; cart badge 2, cart row qty 2 (silently truncated)",
-    "status": "Fail"
+    "actual": "Page message 'quantity must be an integer between 1 and 10'; cart badge 0, cart 0 rows (cart empty)",
+    "status": "Pass"
   }
 ]
