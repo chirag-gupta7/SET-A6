@@ -45,3 +45,10 @@ python -m pytest test_quickcart_ui.py -v
 # headless:
 $env:HEADLESS="1"; python -m pytest test_quickcart_ui.py -v
 ```
+
+## 7. Run the manual cases that need a browser
+Start the app first, then from the project root:
+```powershell
+python tests\run_manual_cases.py
+```
+It executes the manual cases that need real UI input (TC-M-004/005/007/016/017/071), re-checks the known TC-M-042 defect, and writes screenshots + `results.json` to `test-results\manual\`.

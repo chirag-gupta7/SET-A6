@@ -1,0 +1,51 @@
+[
+  {
+    "id": "TC-M-004",
+    "scenario": "Register with a 1-character name",
+    "expected": "name must be 2 to 50 characters",
+    "actual": "Registration page showed 'name must be 2 to 50 characters'; still on /register: True",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-005",
+    "scenario": "Register with a 51-character name",
+    "expected": "name must be 2 to 50 characters",
+    "actual": "Registration page showed 'name must be 2 to 50 characters'; still on /register: True",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-007",
+    "scenario": "Register with a 21-character password",
+    "expected": "password must be 6 to 20 characters",
+    "actual": "Registration page showed 'password must be 6 to 20 characters'; still on /register: True",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-016",
+    "scenario": "Profile phone with 11 digits is rejected",
+    "expected": "phone must be exactly 10 digits",
+    "actual": "Profile page showed 'phone must be exactly 10 digits' (element class 'msg error')",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-017",
+    "scenario": "Profile phone with letters is rejected",
+    "expected": "phone must be exactly 10 digits",
+    "actual": "Profile page showed 'phone must be exactly 10 digits' (element class 'msg error')",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-071",
+    "scenario": "Card Number with 17 digits is rejected",
+    "expected": "card number must be exactly 16 digits",
+    "actual": "Checkout page showed 'card number must be exactly 16 digits'; still on /checkout: True",
+    "status": "Pass"
+  },
+  {
+    "id": "TC-M-042",
+    "scenario": "Detail-page quantity as a non-integer: 2.5 - DEFECT row",
+    "expected": "quantity must be an integer between 1 and 10; the cart does not change",
+    "actual": "Page message 'Added to cart'; cart badge 2, cart row qty 2 (silently truncated)",
+    "status": "Fail"
+  }
+]

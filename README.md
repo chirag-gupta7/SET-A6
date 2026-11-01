@@ -78,8 +78,8 @@ Re-runnable on a dirty DB; failures save a screenshot to `selenium_tests/screens
 | API suite (`tests/test_api.py`) | 224 assertions | all pass (fresh DB run) |
 | Postman collection | 164 requests / 355 assertions | all pass (run twice: fresh DB + dirty DB) |
 | Selenium UI suite | 16 tests | all pass (fresh DB + dirty DB runs) |
-| Manual test cases (`docs/`) | 87 cases | 80 Pass (verified by script), 1 Fail, 6 Not Run for the student |
-| Defects & observations log | 9 entries | 8 accepted design observations + 1 open low defect |
+| Manual test cases (`docs/`) | 87 cases | 86 Pass, 1 Fail (D-08), 0 Not Run |
+| Defects & observations log | 10 entries | 7 accepted observations + 3 open low items (D-03, D-08, D-10) |
 
 ## QA focus areas (mapping)
 
@@ -94,3 +94,4 @@ Re-runnable on a dirty DB; failures save a screenshot to `selenium_tests/screens
 - No stock locking between simultaneous purchases; no per-user coupon usage limits.
 - Dev server with a fixed secret key; not production-ready.
 - UI defect found during manual testing: a non-integer quantity typed on the product page (e.g. `2.5`) is silently truncated to `2` by the page script (the API itself rejects it). See D-08 / TC-M-042.
+- UI messages lose their red/green colour after an API call (JS sets `msg error`, CSS styles `.msg-error`). See D-10.
